@@ -1,14 +1,106 @@
 name: publish-react
+
 on:
   push:
-    tags: ['ui-react-v*']
-permissions:
-  contents: read
+    branches: [main]
+  workflow_dispatch:
+
+permissions: {}
+
 concurrency:
   group: publish-react
   cancel-in-progress: false
+
 jobs:
+  select-mode:
+    if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+    outputs:
+      mode: ${{ steps.mode.outputs.mode }}
+      publish-plan-artifact-id: ${{ steps.mode.outputs.publish-plan-artifact-id }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - uses: pnpm/action-setup@f520eceda224fe1a4aed5a2a27a194379a409996 # v6
+        with:
+          run_install: false
+      - run: pnpm install --frozen-lockfile --ignore-scripts
+      - id: mode
+        uses: changesets/action/select-mode@ae32849d5ba541f9ae29e40e22a623bc13562f51 # v2.1.2
+
+  version:
+    needs: select-mode
+    if: needs.select-mode.outputs.mode == 'version'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - uses: pnpm/action-setup@f520eceda224fe1a4aed5a2a27a194379a409996 # v6
+        with:
+          run_install: false
+      - run: pnpm install --frozen-lockfile
+      - name: Prepare and validate the release PR
+        uses: changesets/action/version@ae32849d5ba541f9ae29e40e22a623bc13562f51 # v2.1.2
+        with:
+          script: pnpm release:version
+          pr-title: "chore: release packages"
+          commit-message: "chore: release packages"
+
+  pack:
+    needs: select-mode
+    if: needs.select-mode.outputs.mode == 'publish'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+    outputs:
+      pack-dir-artifact-id: ${{ steps.pack.outputs.pack-dir-artifact-id }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - uses: pnpm/action-setup@f520eceda224fe1a4aed5a2a27a194379a409996 # v6
+        with:
+          run_install: false
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm check
+      - run: pnpm run package
+      - run: git diff --exit-code
+      - name: Pack the validated package
+        id: pack
+        uses: changesets/action/pack@ae32849d5ba541f9ae29e40e22a623bc13562f51 # v2.1.2
+        with:
+          publish-plan-artifact-id: ${{ needs.select-mode.outputs.publish-plan-artifact-id }}
+
   apple:
+    permissions:
+      contents: read
+    needs: select-mode
+    if: needs.select-mode.outputs.mode == 'publish'
     runs-on: macos-latest
     timeout-minutes: 15
     steps:
@@ -19,6 +111,10 @@ jobs:
       - name: Build for iOS Simulator
         run: swift build --scratch-path .build-ios --triple arm64-apple-ios17.0-simulator --sdk "$(xcrun --sdk iphonesimulator --show-sdk-path)"
   android:
+    permissions:
+      contents: read
+    needs: select-mode
+    if: needs.select-mode.outputs.mode == 'publish'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -31,33 +127,31 @@ jobs:
           java-version: '21'
       - run: ./gradlew check assembleRelease
         working-directory: platforms/compose
+
   publish:
-    needs: [apple, android]
+    needs: [pack, apple, android]
     runs-on: ubuntu-latest
     timeout-minutes: 20
     permissions:
-      contents: read
+      contents: write
       id-token: write
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           fetch-depth: 0
           persist-credentials: false
-      - name: Check the release tag
-        run: |
-          version=$(node -p "require('./packages/react/package.json').version")
-          test "$GITHUB_REF_NAME" = "ui-react-v$version" || { echo 'The tag must match the package version.'; exit 1; }
-          git merge-base --is-ancestor "$GITHUB_SHA" origin/main
-      - uses: ./.github/actions/setup-node
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
         with:
-          node-version-file: .node-version
-          registry-url: https://registry.npmjs.org
+          node-version: 24
           package-manager-cache: false
-      - run: pnpm check
-      - run: pnpm run package
-      - run: git diff --exit-code
-      - name: Publish @origin89/ui-react
-        run: |
-          version=$(node -p "require('./packages/react/package.json').version")
-          npm publish "dist/origin89-ui-react-$version.tgz" --provenance --access public
+      - uses: pnpm/action-setup@f520eceda224fe1a4aed5a2a27a194379a409996 # v6
+        with:
+          run_install: false
+      - run: pnpm install --frozen-lockfile --ignore-scripts
+      - name: Publish the prepared package and release notes
+        uses: changesets/action/publish@ae32849d5ba541f9ae29e40e22a623bc13562f51 # v2.1.2
+        env:
+          NPM_CONFIG_PROVENANCE: "true"
+          PNPM_CONFIG_PROVENANCE: "true"
+        with:
+          pack-dir-artifact-id: ${{ needs.pack.outputs.pack-dir-artifact-id }}

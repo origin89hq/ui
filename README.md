@@ -41,6 +41,6 @@ See [LICENSING.md](LICENSING.md): first-party source is public for review while 
 
 ## npm releases
 
-`@origin89/ui-react` is published by `.github/workflows/publish-react.yml` using npm trusted publishing with provenance. Configure the npm package's GitHub trusted publisher for organization `origin89hq`, repository `ui`, workflow `publish-react.yml`, and no environment. Allow direct publishing. No npm token belongs in repository secrets.
+Run `pnpm changeset` with each change that affects `@origin89/ui-react` consumers. Include the release note and bump choice in the feature PR. The release workflow collects those notes into a version PR with `packages/react/CHANGELOG.md`. Review and merge that PR to publish through npm OIDC and create the GitHub release notes.
 
-The initial `0.0.0` bootstrap creates the npm package so its trusted publisher can be configured. Release versions stay in `packages/react/package.json`. After merging a checked version change, push `ui-react-v<version>` at that main-branch commit. The workflow checks the tag, builds and validates the package, and publishes its tarball. Existing `v0.1.0` GitHub release assets remain available.
+See [the release guide](docs/releases.md) for package scope, validation, the initial npm release and recovery. The configured trusted-publisher filename remains `publish-react.yml`.

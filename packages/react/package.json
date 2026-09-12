@@ -19,7 +19,8 @@
   "files": [
     "dist",
     "src/styles.css",
-    "LICENSING.md"
+    "LICENSING.md",
+    "CHANGELOG.md"
   ],
   "sideEffects": [
     "**/*.css"
@@ -42,5 +43,6 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "private": false
 }
