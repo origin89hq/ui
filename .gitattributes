@@ -1,0 +1,3 @@
+# Preserve upstream wrapper and font-license bytes, including line endings.
+*.bat -text -whitespace
+*-OFL.txt -text -whitespace

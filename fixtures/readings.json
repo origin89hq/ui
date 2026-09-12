@@ -1,0 +1,37 @@
+[
+  {
+    "label": "Battery",
+    "reading": {
+      "state": "current",
+      "value": 76,
+      "unit": "%"
+    },
+    "expected": "76 %"
+  },
+  {
+    "label": "Solar",
+    "reading": {
+      "state": "current",
+      "value": 0,
+      "unit": "kW"
+    },
+    "expected": "0 kW"
+  },
+  {
+    "label": "Battery",
+    "reading": {
+      "state": "stale",
+      "value": 78,
+      "unit": "%",
+      "age": "12 min ago"
+    },
+    "expected": "78 % \u00b7 Last known \u00b7 12 min ago"
+  },
+  {
+    "label": "Solar",
+    "reading": {
+      "state": "unknown"
+    },
+    "expected": "Unknown"
+  }
+]

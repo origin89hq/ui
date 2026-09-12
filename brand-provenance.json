@@ -1,0 +1,88 @@
+{
+  "package": "@origin89/brand",
+  "version": "0.3.1",
+  "sources": [
+    {
+      "file": "brand.json",
+      "sha256": "5838f019d20b187cdf344f5a49b46633056813006b9a38aeea2187a524e9cbe2"
+    },
+    {
+      "file": "fonts/InterTight-400.ttf",
+      "sha256": "f3610270baa131f7b5dd2c469426af8fc8902cc04fee0ecd10c9d8c08e7a9caf"
+    },
+    {
+      "file": "fonts/InterTight-600.ttf",
+      "sha256": "c371b7bd6cc02f5240c73bc178ef365b36fb8fcd9db7baa02d454672f12f5a6f"
+    },
+    {
+      "file": "fonts/IBMPlexMono-Regular.ttf",
+      "sha256": "6a3412f058c7d8dfd9170c41e85ade48e5156ecb89356110ca57a0a27734af46"
+    },
+    {
+      "file": "fonts/InterTight-OFL.txt",
+      "sha256": "50240ab035cf1b6b3307940235481d515c4b6de3ab1fa843dbe59e7892cb9d58"
+    },
+    {
+      "file": "fonts/IBMPlexMono-OFL.txt",
+      "sha256": "7e6b2818edbd8f6a01ae80641cc8f16a51080d08fb4e532be3a0b6f74adb07da"
+    }
+  ],
+  "outputs": [
+    {
+      "file": "platforms/swiftui/Sources/Origin89UI/GeneratedTokens.swift",
+      "sha256": "8e7b57c367425a05aa14287be4f9416a899ce56e56871d5e17a0e6f533d00255"
+    },
+    {
+      "file": "platforms/compose/ui/src/main/kotlin/com/origin89/ui/GeneratedTokens.kt",
+      "sha256": "4d589f53b7b4994327267add9198cc616dcf97a01e6ba42c58b883e13acb5501"
+    },
+    {
+      "file": "platforms/swiftui/Sources/Origin89UI/Resources/InterTight-400.ttf",
+      "sha256": "f3610270baa131f7b5dd2c469426af8fc8902cc04fee0ecd10c9d8c08e7a9caf"
+    },
+    {
+      "file": "platforms/compose/ui/src/main/res/font/inter_tight_regular.ttf",
+      "sha256": "f3610270baa131f7b5dd2c469426af8fc8902cc04fee0ecd10c9d8c08e7a9caf"
+    },
+    {
+      "file": "platforms/swiftui/Sources/Origin89UI/Resources/InterTight-600.ttf",
+      "sha256": "c371b7bd6cc02f5240c73bc178ef365b36fb8fcd9db7baa02d454672f12f5a6f"
+    },
+    {
+      "file": "platforms/compose/ui/src/main/res/font/inter_tight_semibold.ttf",
+      "sha256": "c371b7bd6cc02f5240c73bc178ef365b36fb8fcd9db7baa02d454672f12f5a6f"
+    },
+    {
+      "file": "platforms/swiftui/Sources/Origin89UI/Resources/IBMPlexMono-Regular.ttf",
+      "sha256": "6a3412f058c7d8dfd9170c41e85ade48e5156ecb89356110ca57a0a27734af46"
+    },
+    {
+      "file": "platforms/compose/ui/src/main/res/font/ibm_plex_mono.ttf",
+      "sha256": "6a3412f058c7d8dfd9170c41e85ade48e5156ecb89356110ca57a0a27734af46"
+    },
+    {
+      "file": "platforms/swiftui/Sources/Origin89UI/Resources/InterTight-OFL.txt",
+      "sha256": "50240ab035cf1b6b3307940235481d515c4b6de3ab1fa843dbe59e7892cb9d58"
+    },
+    {
+      "file": "platforms/compose/ui/src/main/resources/licenses/InterTight-OFL.txt",
+      "sha256": "50240ab035cf1b6b3307940235481d515c4b6de3ab1fa843dbe59e7892cb9d58"
+    },
+    {
+      "file": "platforms/swiftui/Sources/Origin89UI/Resources/IBMPlexMono-OFL.txt",
+      "sha256": "7e6b2818edbd8f6a01ae80641cc8f16a51080d08fb4e532be3a0b6f74adb07da"
+    },
+    {
+      "file": "platforms/compose/ui/src/main/resources/licenses/IBMPlexMono-OFL.txt",
+      "sha256": "7e6b2818edbd8f6a01ae80641cc8f16a51080d08fb4e532be3a0b6f74adb07da"
+    },
+    {
+      "file": "platforms/swiftui/Tests/Origin89UITests/Fixtures/readings.json",
+      "sha256": "d13a767cf3715e353689621f45d60c967cd66091a4e9e95cdecad15085903a64"
+    },
+    {
+      "file": "platforms/compose/ui/src/test/resources/readings.json",
+      "sha256": "d13a767cf3715e353689621f45d60c967cd66091a4e9e95cdecad15085903a64"
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+The MIT and Apache texts here apply to generated palette values from `@origin89/brand`, not to the first-party UI library. Font licenses travel with their resources. See `brand.md` and the root `LICENSING.md`.

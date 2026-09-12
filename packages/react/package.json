@@ -1,0 +1,43 @@
+{
+  "name": "@origin89/ui-react",
+  "version": "0.1.0",
+  "description": "Origin89 React components and equipment illustrations.",
+  "type": "module",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/origin89hq/ui.git",
+    "directory": "packages/react"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./styles.css": "./src/styles.css"
+  },
+  "files": [
+    "dist",
+    "src/styles.css",
+    "LICENSING.md"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "node --test test/*.test.mjs"
+  },
+  "peerDependencies": {
+    "react": "^19.2.8"
+  },
+  "dependencies": {
+    "@origin89/brand": "0.3.1"
+  },
+  "devDependencies": {
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.3"
+  }
+}
