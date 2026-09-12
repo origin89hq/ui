@@ -38,3 +38,9 @@ Android: the `platforms/compose` Gradle project builds an Android library. Run `
 Run all three platform checks before a release. `just package` produces the React tarball; Swift consumers use the repository tag; `platforms/compose/gradlew` builds Android artifacts from that same tag. No mobile or web runtime depends on a controller checkout. Extracted web illustrations originate from `origin89hq/origin89` commit `7dc27cd9e5f7f7ae67b519b037ca600265012d1e`.
 
 See [LICENSING.md](LICENSING.md): first-party source is public for review while its software license is being selected. Brand and font terms remain separate.
+
+## npm releases
+
+`@origin89/ui-react` is published by `.github/workflows/publish-react.yml` using npm trusted publishing with provenance. Configure the npm package's GitHub trusted publisher for organization `origin89hq`, repository `ui`, workflow `publish-react.yml`, and no environment. Allow direct publishing. No npm token belongs in repository secrets.
+
+The initial `0.0.0` bootstrap creates the npm package so its trusted publisher can be configured. Release versions stay in `packages/react/package.json`. After merging a checked version change, push `ui-react-v<version>` at that main-branch commit. The workflow checks the tag, builds and validates the package, and publishes its tarball. Existing `v0.1.0` GitHub release assets remain available.
