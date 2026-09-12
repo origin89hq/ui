@@ -19,7 +19,8 @@
   "files": [
     "dist",
     "src/styles.css",
-    "LICENSING.md"
+    "LICENSING.md",
+    "CHANGELOG.md"
   ],
   "sideEffects": [
     "**/*.css"
@@ -39,5 +40,9 @@
     "react-dom": "19.2.8",
     "@types/react": "19.2.18",
     "@types/react-dom": "19.2.3"
-  }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "private": false
 }

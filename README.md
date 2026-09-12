@@ -38,3 +38,9 @@ Android: the `platforms/compose` Gradle project builds an Android library. Run `
 Run all three platform checks before a release. `just package` produces the React tarball; Swift consumers use the repository tag; `platforms/compose/gradlew` builds Android artifacts from that same tag. No mobile or web runtime depends on a controller checkout. Extracted web illustrations originate from `origin89hq/origin89` commit `7dc27cd9e5f7f7ae67b519b037ca600265012d1e`.
 
 See [LICENSING.md](LICENSING.md): first-party source is public for review while its software license is being selected. Brand and font terms remain separate.
+
+## npm releases
+
+Run `pnpm changeset` with each change that affects `@origin89/ui-react` consumers. Include the release note and bump choice in the feature PR. The release workflow collects those notes into a version PR with `packages/react/CHANGELOG.md`. Review and merge that PR to publish through npm OIDC and create the GitHub release notes.
+
+See [the release guide](docs/releases.md) for package scope, validation, the initial npm release and recovery. The configured trusted-publisher filename remains `publish-react.yml`.
