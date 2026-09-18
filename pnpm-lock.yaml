@@ -125,8 +125,8 @@ importers:
   packages/react:
     dependencies:
       '@origin89/brand':
-        specifier: 0.3.1
-        version: 0.3.1
+        specifier: 0.4.0
+        version: 0.4.0
     devDependencies:
       '@types/react':
         specifier: 19.2.18
@@ -283,6 +283,10 @@ packages:
 
   '@origin89/brand@0.3.1':
     resolution: {integrity: sha512-H0d49I0nWyYmq9CPr/4e8/lo1yRUYyaEMhqqNxxvM5xvk3ujnnvSZP02t1Zp7ncCjwRW4ihVzPmL5RXIwxP13Q==}
+    engines: {node: '>=22.12.0'}
+
+  '@origin89/brand@0.4.0':
+    resolution: {integrity: sha512-vX9eehWsu+7J81k685wKlR+G+VtyfMnk0bk9JVM1YNfCWtD0hQLe8fC+xGzLTu2kFJUQWFW3qWh3uwNhS7sbBQ==}
     engines: {node: '>=22.12.0'}
 
   '@pnpm/deps.graph-sequencer@1100.0.1':
@@ -559,6 +563,8 @@ snapshots:
       yaml: 2.9.1
 
   '@origin89/brand@0.3.1': {}
+
+  '@origin89/brand@0.4.0': {}
 
   '@pnpm/deps.graph-sequencer@1100.0.1': {}
 
