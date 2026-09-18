@@ -33,7 +33,7 @@
     "react": "^19.2.8"
   },
   "dependencies": {
-    "@origin89/brand": "0.3.1"
+    "@origin89/brand": "0.4.0"
   },
   "devDependencies": {
     "react": "19.2.8",

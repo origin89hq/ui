@@ -4,13 +4,13 @@
 .o89-reading strong { font-size: 1.5rem; font-weight: 500; font-variant-numeric: tabular-nums; }
 .o89-reading[data-state="stale"] strong { text-decoration: underline dashed; text-underline-offset: .3em; }
 
-.equipment-drawing { --equipment-fill: var(--color-bg); --equipment-line: color-mix(in srgb, var(--color-fg) 55%, var(--color-bg)); overflow: visible; }
+.equipment-drawing { --equipment-fill: var(--color-page); --equipment-line: color-mix(in srgb, var(--color-fg) 55%, var(--color-page)); overflow: visible; }
 .equipment-shadow { fill: var(--color-fg); opacity: .045; }
 .equipment-face { fill: var(--equipment-fill); stroke: var(--equipment-line); stroke-width: .7; }
-.equipment-side { fill: color-mix(in srgb, var(--color-line) 65%, var(--color-bg)); stroke: var(--equipment-line); stroke-width: .7; }
-.equipment-top { fill: var(--color-bg); stroke: var(--equipment-line); stroke-width: .7; }
+.equipment-side { fill: color-mix(in srgb, var(--color-line) 65%, var(--color-page)); stroke: var(--equipment-line); stroke-width: .7; }
+.equipment-top { fill: var(--color-page); stroke: var(--equipment-line); stroke-width: .7; }
 .equipment-edge { fill: none; stroke: var(--equipment-line); stroke-width: .8; stroke-linejoin: bevel; }
 .equipment-panel { fill: var(--color-mtq-blue); fill-opacity: .75; stroke: var(--equipment-line); stroke-width: .7; }
-.equipment-panel-grid { fill: none; stroke: var(--color-bg); stroke-width: .6; opacity: .65; }
+.equipment-panel-grid { fill: none; stroke: var(--color-page); stroke-width: .6; opacity: .65; }
 .equipment-window { fill: var(--color-line); stroke: var(--equipment-line); stroke-width: .7; }
-.equipment-timber { fill: color-mix(in srgb, var(--color-warning-deep) 12%, var(--color-bg)); stroke: var(--equipment-line); stroke-width: .7; }
+.equipment-timber { fill: color-mix(in srgb, var(--color-warning-deep) 12%, var(--color-page)); stroke: var(--equipment-line); stroke-width: .7; }
