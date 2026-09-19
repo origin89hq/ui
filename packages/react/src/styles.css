@@ -14,3 +14,41 @@
 .equipment-panel-grid { fill: none; stroke: var(--color-page); stroke-width: .6; opacity: .65; }
 .equipment-window { fill: var(--color-line); stroke: var(--equipment-line); stroke-width: .7; }
 .equipment-timber { fill: color-mix(in srgb, var(--color-warning-deep) 12%, var(--color-page)); stroke: var(--equipment-line); stroke-width: .7; }
+
+/* The workspace surfaces. Geometry and spacing only: every colour is a brand token, and the
+   monospace face is the consumer's --font-data where it sets one. */
+.o89-tag { border: 1px solid var(--color-line-strong); padding: 5px 8px; font-family: var(--font-data, ui-monospace, monospace); font-size: 12px; line-height: normal; letter-spacing: .04em; white-space: nowrap; color: var(--color-faint); }
+@media (max-width: 1250px) { .o89-tag { display: none; } }
+
+/* Each tone pairs its hue with a border style, so a row still reads in monochrome. */
+.o89-status { display: inline-flex; align-items: center; gap: 6px; padding: 3px 8px; border: 1px solid currentColor; font-family: var(--font-data, ui-monospace, monospace); font-size: 12px; line-height: normal; white-space: nowrap; }
+.o89-status[data-tone="nominal"] { color: var(--color-nominal); }
+.o89-status[data-tone="alarm"] { border-width: 2px; color: var(--color-alarm); }
+.o89-status[data-tone="warning"] { border-style: dashed; color: var(--color-warning); }
+.o89-status[data-tone="info"] { color: var(--color-info); }
+.o89-status[data-tone="faint"] { border-style: dotted; color: var(--color-faint); }
+
+.o89-notice { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 16px 0; padding: 14px 16px; border: 1px solid var(--color-line); border-left-width: 3px; border-radius: 10px; corner-shape: bevel; background: var(--color-surface); font-size: 13px; line-height: 1.65; overflow-wrap: anywhere; }
+.o89-notice[data-tone="info"] { border-left-color: var(--color-info); color: var(--color-muted); }
+.o89-notice[data-tone="alarm"] { border-left-color: var(--color-alarm); color: var(--color-alarm); }
+.o89-notice a { color: inherit; text-decoration: underline; }
+.o89-notice code { font-family: var(--font-data, ui-monospace, monospace); font-size: 12px; }
+/* A touch pointer cannot aim at a line of text, so a link in a notice takes a full target. */
+@media (pointer: coarse) { .o89-notice a { display: inline-flex; align-items: center; min-height: 44px; } }
+
+.o89-empty { padding: 48px 20px; text-align: center; color: var(--color-muted); }
+.o89-empty-mark { display: block; margin: 0 auto 16px; color: var(--color-faint); }
+.o89-empty h3 { margin: 0 0 10px; font-size: 20px; color: var(--color-fg); }
+.o89-empty p { margin: 0 auto; max-width: 450px; font-size: 13px; line-height: 1.6; }
+
+.o89-panel { min-width: 0; padding: 22px 24px 0; border: 1px solid var(--color-line); border-radius: 12px; corner-shape: bevel; background: var(--color-surface); }
+@media (max-width: 640px) { .o89-panel { padding: 20px 16px 0; } }
+
+.o89-loading { padding: 24px 0; }
+.o89-loading p { display: flex; align-items: center; gap: 10px; margin: 0; font-size: 13px; color: var(--color-muted); }
+.o89-loading-spinner { flex: none; width: 13px; height: 13px; border: 2px solid var(--color-line-strong); border-top-color: var(--color-signal); border-radius: 50%; animation: o89-spin .9s linear infinite; }
+.o89-loading-bar { display: block; height: 32px; margin: 16px 0; background: var(--color-line); animation: o89-pulse 1.6s ease-in-out infinite alternate; }
+.o89-loading-bar:nth-child(even) { width: 80%; }
+@keyframes o89-spin { to { transform: rotate(360deg); } }
+@keyframes o89-pulse { from { opacity: .35; } to { opacity: .7; } }
+@media (prefers-reduced-motion: reduce) { .o89-loading-spinner, .o89-loading-bar { animation: none; } }
