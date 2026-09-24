@@ -1,5 +1,4 @@
 import SwiftUI
-import CoreText
 
 public enum ReadingValue: Equatable, Sendable {
     case current(value: Double, unit: String)
@@ -23,38 +22,21 @@ public enum ReadingValue: Equatable, Sendable {
     }
 }
 
-@MainActor public enum Origin89Fonts {
-    private static var registered = false
-    public static func register() {
-        guard !registered else { return }
-        for name in ["InterTight-400", "InterTight-600", "IBMPlexMono-Regular"] {
-            guard let url = Bundle.module.url(forResource: name, withExtension: "ttf") else {
-                preconditionFailure("Missing bundled Origin89 font: \(name)")
-            }
-            CTFontManagerRegisterFontsForURL(url as CFURL, .process, nil)
-        }
-        registered = true
-    }
-}
-
 public struct Origin89Reading: View {
     public let label: String
     public let reading: ReadingValue
-    @Environment(\.colorScheme) private var colorScheme
     public init(_ label: String, reading: ReadingValue) {
         self.label = label
         self.reading = reading
-        Origin89Fonts.register()
     }
     public var body: some View {
-        let palette = colorScheme == .dark ? Origin89Tokens.dark : Origin89Tokens.light
         VStack(alignment: .leading, spacing: 6) {
-            Text(label).font(.custom("InterTight-Regular", size: 14, relativeTo: .subheadline)).foregroundStyle(palette.muted)
-            Text(reading.description).font(.custom("InterTight-SemiBold", size: 24, relativeTo: .title2)).monospacedDigit().foregroundStyle(palette.fg)
+            Text(label).font(.origin89Label).foregroundStyle(.origin89.muted)
+            Text(reading.description).font(.origin89Value).monospacedDigit().foregroundStyle(.origin89.fg)
         }
         .padding(.vertical, 16)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .overlay(alignment: .bottom) { Rectangle().fill(palette.line).frame(height: 1) }
+        .overlay(alignment: .bottom) { Rectangle().fill(.origin89.line).frame(height: 1) }
         .accessibilityElement(children: .combine)
     }
 }

@@ -67,4 +67,27 @@ public enum Origin89Tokens {
         alarmDeep: Color(red: 166/255.0, green: 59/255.0, blue: 37/255.0),
         info: Color(red: 127/255.0, green: 176/255.0, blue: 212/255.0)
     )
+    /// Colours that follow the current light or dark appearance.
+    public static let adaptive = Origin89Palette(
+        page: Color(light: light.page, dark: dark.page),
+        surface: Color(light: light.surface, dark: dark.surface),
+        surfaceRaised: Color(light: light.surfaceRaised, dark: dark.surfaceRaised),
+        line: Color(light: light.line, dark: dark.line),
+        lineStrong: Color(light: light.lineStrong, dark: dark.lineStrong),
+        focus: Color(light: light.focus, dark: dark.focus),
+        fg: Color(light: light.fg, dark: dark.fg),
+        muted: Color(light: light.muted, dark: dark.muted),
+        faint: Color(light: light.faint, dark: dark.faint),
+        action: Color(light: light.action, dark: dark.action),
+        actionLit: Color(light: light.actionLit, dark: dark.actionLit),
+        link: Color(light: light.link, dark: dark.link),
+        onFill: Color(light: light.onFill, dark: dark.onFill),
+        nominal: Color(light: light.nominal, dark: dark.nominal),
+        warning: Color(light: light.warning, dark: dark.warning),
+        nominalDeep: Color(light: light.nominalDeep, dark: dark.nominalDeep),
+        warningDeep: Color(light: light.warningDeep, dark: dark.warningDeep),
+        alarm: Color(light: light.alarm, dark: dark.alarm),
+        alarmDeep: Color(light: light.alarmDeep, dark: dark.alarmDeep),
+        info: Color(light: light.info, dark: dark.info)
+    )
 }

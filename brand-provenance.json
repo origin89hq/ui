@@ -30,7 +30,7 @@
   "outputs": [
     {
       "file": "platforms/swiftui/Sources/Origin89UI/GeneratedTokens.swift",
-      "sha256": "8e7b57c367425a05aa14287be4f9416a899ce56e56871d5e17a0e6f533d00255"
+      "sha256": "6eada2bbe7fe83ed219d450d175457c7272d8b57068b59a9e45c882d820e1ed9"
     },
     {
       "file": "platforms/compose/ui/src/main/kotlin/com/origin89/ui/GeneratedTokens.kt",
