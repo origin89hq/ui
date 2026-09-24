@@ -1,10 +1,10 @@
 {
   "package": "@origin89/brand",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "sources": [
     {
       "file": "brand.json",
-      "sha256": "5838f019d20b187cdf344f5a49b46633056813006b9a38aeea2187a524e9cbe2"
+      "sha256": "64b268aa10e8c5da46bb1a10c5064b5178a01900afa00617c8dabfe838ce999f"
     },
     {
       "file": "fonts/InterTight-400.ttf",
@@ -30,11 +30,11 @@
   "outputs": [
     {
       "file": "platforms/swiftui/Sources/Origin89UI/GeneratedTokens.swift",
-      "sha256": "6eada2bbe7fe83ed219d450d175457c7272d8b57068b59a9e45c882d820e1ed9"
+      "sha256": "80f37f82ee9d7702ae8ac6399da544710ad1e13c45a360fc1d5d1788b6b764d9"
     },
     {
       "file": "platforms/compose/ui/src/main/kotlin/com/origin89/ui/GeneratedTokens.kt",
-      "sha256": "4d589f53b7b4994327267add9198cc616dcf97a01e6ba42c58b883e13acb5501"
+      "sha256": "429a3727bb1a6974fbb124f403f57d5ef627569d6ab85f15558d53a2e977bac6"
     },
     {
       "file": "platforms/swiftui/Sources/Origin89UI/Resources/InterTight-400.ttf",

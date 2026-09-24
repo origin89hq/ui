@@ -24,7 +24,7 @@ private func same(_ a: Color.Resolved, _ b: Color.Resolved) -> Bool {
 @MainActor func adaptiveColorsFollowTheScheme(scheme: ColorScheme) {
     let expected = colors(scheme == .dark ? Origin89Tokens.dark : Origin89Tokens.light)
     let adaptive = colors(Origin89Tokens.adaptive)
-    #expect(adaptive.count == 20)
+    #expect(adaptive.count == 21)
     #expect(adaptive.map(\.0) == expected.map(\.0))
     for ((name, color), (_, fixed)) in zip(adaptive, expected) {
         #expect(same(resolved(color, in: scheme), resolved(fixed, in: scheme)), "\(name) in \(scheme)")

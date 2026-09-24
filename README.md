@@ -5,7 +5,7 @@ Shared interface foundations with native implementations for React, SwiftUI and 
 | Platform | Package | Available base |
 | --- | --- | --- |
 | Web | `@origin89/ui-react` | Reading, equipment illustrations, styles |
-| Apple | Swift package `Origin89UI` | Native Reading, dynamic type, fonts and light/dark tokens |
+| Apple | Swift package `Origin89UI` | Native Reading, Status, Notice, Loading, dynamic type, fonts and light/dark tokens |
 | Android | `com.origin89:ui-compose` | Native Compose Reading, fonts and light/dark tokens |
 
 All three distinguish current, stale and unknown values. Zero is a valid measurement; non-finite values display as unknown. Shared JSON examples exercise these states across platforms. This is a usable foundation, not a complete mobile application or a shared screen runtime.
@@ -27,7 +27,7 @@ React: install `@origin89/ui-react` from npm. Import `Reading` or `EquipmentIllu
 <Reading label="Battery" reading={{ state: "current", value: 76, unit: "%" }} />
 ```
 
-Swift: add `https://github.com/origin89hq/ui` as a Swift package dependency with an exact version such as `0.2.0`, link `Origin89UI`, then use `Origin89Reading`. Brand colours follow light and dark mode through `.foregroundStyle(.origin89.muted)` or `Color.origin89.surface`; fixed palettes stay available as `Origin89Tokens.light` and `.dark`. Text styles such as `.font(.origin89Label)` register the bundled fonts. Native previews include current, zero, stale and unknown examples.
+Swift: add `https://github.com/origin89hq/ui` as a Swift package dependency pinned to the latest plain `X.Y.Z` [tag](https://github.com/origin89hq/ui/tags) with `exact:`, link `Origin89UI`, then use `Origin89Reading`, `Origin89Status`, `Origin89Notice` or `Origin89Loading`. Brand colours follow light and dark mode through `.foregroundStyle(.origin89.muted)` or `Color.origin89.surface`; fixed palettes stay available as `Origin89Tokens.light` and `.dark`. Text styles such as `.font(.origin89Label)` register the bundled fonts. Native previews include current, zero, stale and unknown examples.
 
 Android: the `platforms/compose` Gradle project builds an Android library. Run `./gradlew :ui:publishToMavenLocal` there, add `mavenLocal()` to a consuming development project and depend on `com.origin89:ui-compose:0.1.0`. Release AAR and source artifacts are also attached to GitHub releases; Maven Central publication is not configured yet.
 

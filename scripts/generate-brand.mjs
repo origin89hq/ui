@@ -7,7 +7,7 @@ const brandRoot = new URL("node_modules/@origin89/brand/", root);
 const brandBytes = await readFile(new URL("brand.json", brandRoot));
 const brand = JSON.parse(brandBytes);
 const version = JSON.parse(await readFile(new URL("package.json", brandRoot), "utf8")).version;
-assert.equal(version, "0.3.1");
+assert.equal(version, "0.4.0");
 const outputs = new Map();
 const camel = (value) => value.replace(/-([a-z])/g, (_, letter) => letter.toUpperCase());
 const keys = Object.keys(brand.colour.themes.light);
