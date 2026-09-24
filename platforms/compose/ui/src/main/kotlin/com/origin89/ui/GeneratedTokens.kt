@@ -1,4 +1,4 @@
-// Generated from @origin89/brand 0.3.1; run pnpm brand:generate.
+// Generated from @origin89/brand 0.4.0; run pnpm brand:generate.
 package com.origin89.ui
 import androidx.compose.ui.graphics.Color
 data class Origin89Palette(
@@ -15,6 +15,7 @@ data class Origin89Palette(
     val actionLit: Color,
     val link: Color,
     val onFill: Color,
+    val signal: Color,
     val nominal: Color,
     val warning: Color,
     val nominalDeep: Color,
@@ -38,6 +39,7 @@ object Origin89Tokens {
         actionLit = Color(0xFF3F61B3),
         link = Color(0xFF2B4A97),
         onFill = Color(0xFFFFFFFF),
+        signal = Color(0xFF5771B2),
         nominal = Color(0xFF4C7D5F),
         warning = Color(0xFF9F6601),
         nominalDeep = Color(0xFF4C7D5F),
@@ -60,6 +62,7 @@ object Origin89Tokens {
         actionLit = Color(0xFF3F61B3),
         link = Color(0xFF6279AD),
         onFill = Color(0xFFFFFFFF),
+        signal = Color(0xFF7F9CE0),
         nominal = Color(0xFF2F9D64),
         warning = Color(0xFFE9A13C),
         nominalDeep = Color(0xFF168C54),

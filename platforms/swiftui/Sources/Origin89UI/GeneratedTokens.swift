@@ -1,4 +1,4 @@
-// Generated from @origin89/brand 0.3.1; run pnpm brand:generate.
+// Generated from @origin89/brand 0.4.0; run pnpm brand:generate.
 import SwiftUI
 public struct Origin89Palette: Sendable {
     public let page: Color
@@ -14,6 +14,7 @@ public struct Origin89Palette: Sendable {
     public let actionLit: Color
     public let link: Color
     public let onFill: Color
+    public let signal: Color
     public let nominal: Color
     public let warning: Color
     public let nominalDeep: Color
@@ -37,6 +38,7 @@ public enum Origin89Tokens {
         actionLit: Color(red: 63/255.0, green: 97/255.0, blue: 179/255.0),
         link: Color(red: 43/255.0, green: 74/255.0, blue: 151/255.0),
         onFill: Color(red: 255/255.0, green: 255/255.0, blue: 255/255.0),
+        signal: Color(red: 87/255.0, green: 113/255.0, blue: 178/255.0),
         nominal: Color(red: 76/255.0, green: 125/255.0, blue: 95/255.0),
         warning: Color(red: 159/255.0, green: 102/255.0, blue: 1/255.0),
         nominalDeep: Color(red: 76/255.0, green: 125/255.0, blue: 95/255.0),
@@ -59,6 +61,7 @@ public enum Origin89Tokens {
         actionLit: Color(red: 63/255.0, green: 97/255.0, blue: 179/255.0),
         link: Color(red: 98/255.0, green: 121/255.0, blue: 173/255.0),
         onFill: Color(red: 255/255.0, green: 255/255.0, blue: 255/255.0),
+        signal: Color(red: 127/255.0, green: 156/255.0, blue: 224/255.0),
         nominal: Color(red: 47/255.0, green: 157/255.0, blue: 100/255.0),
         warning: Color(red: 233/255.0, green: 161/255.0, blue: 60/255.0),
         nominalDeep: Color(red: 22/255.0, green: 140/255.0, blue: 84/255.0),
@@ -82,6 +85,7 @@ public enum Origin89Tokens {
         actionLit: Color(light: light.actionLit, dark: dark.actionLit),
         link: Color(light: light.link, dark: dark.link),
         onFill: Color(light: light.onFill, dark: dark.onFill),
+        signal: Color(light: light.signal, dark: dark.signal),
         nominal: Color(light: light.nominal, dark: dark.nominal),
         warning: Color(light: light.warning, dark: dark.warning),
         nominalDeep: Color(light: light.nominalDeep, dark: dark.nominalDeep),
