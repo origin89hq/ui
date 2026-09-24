@@ -21,13 +21,13 @@ Use the pinned Node/pnpm versions. Apple builds require Xcode with Swift 6; mini
 
 ## Consume
 
-React: install the `origin89-ui-react-0.1.0.tgz` asset from the `v0.1.0` GitHub release. Import `Reading` or `EquipmentIllustration` from `@origin89/ui-react` and import `@origin89/ui-react/styles.css`. For example:
+React: install `@origin89/ui-react` from npm. Import `Reading` or `EquipmentIllustration` from `@origin89/ui-react` and import `@origin89/ui-react/styles.css`. For example:
 
 ```tsx
 <Reading label="Battery" reading={{ state: "current", value: 76, unit: "%" }} />
 ```
 
-Swift: add `https://github.com/origin89hq/ui` as a Swift package dependency at `0.1.0`, link `Origin89UI`, then use `Origin89Reading`. Native previews include current, zero, stale and unknown examples.
+Swift: add `https://github.com/origin89hq/ui` as a Swift package dependency with an exact version such as `0.2.0`, link `Origin89UI`, then use `Origin89Reading`. Native previews include current, zero, stale and unknown examples.
 
 Android: the `platforms/compose` Gradle project builds an Android library. Run `./gradlew :ui:publishToMavenLocal` there, add `mavenLocal()` to a consuming development project and depend on `com.origin89:ui-compose:0.1.0`. Release AAR and source artifacts are also attached to GitHub releases; Maven Central publication is not configured yet.
 
@@ -35,7 +35,7 @@ Android: the `platforms/compose` Gradle project builds an Android library. Run `
 
 `pnpm brand:generate` derives native tokens, fonts and license resources from the pinned `@origin89/brand` release. `brand-provenance.json` records input and output hashes; `pnpm brand:check` rejects drift. Update the package version and regenerate these files together. Do not hand-edit generated palettes.
 
-Run all three platform checks before a release. `just package` produces the React tarball; Swift consumers use the repository tag; `platforms/compose/gradlew` builds Android artifacts from that same tag. No mobile or web runtime depends on a controller checkout. Extracted web illustrations originate from `origin89hq/origin89` commit `7dc27cd9e5f7f7ae67b519b037ca600265012d1e`.
+Run all three platform checks before a release. `just package` produces the React tarball. Each npm release also tags its commit with the plain version, such as `0.2.0`, after the Swift and Android checks pass; Swift consumers resolve that tag and `platforms/compose/gradlew` builds Android artifacts from it. No mobile or web runtime depends on a controller checkout. Extracted web illustrations originate from `origin89hq/origin89` commit `7dc27cd9e5f7f7ae67b519b037ca600265012d1e`.
 
 See [LICENSING.md](LICENSING.md): first-party source is public for review while its software license is being selected. Brand and font terms remain separate.
 

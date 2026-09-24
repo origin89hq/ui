@@ -157,3 +157,24 @@ jobs:
           PNPM_CONFIG_PROVENANCE: "true"
         with:
           pack-dir-artifact-id: ${{ needs.pack.outputs.pack-dir-artifact-id }}
+
+  swift-tag:
+    needs: publish
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Tag the validated commit for Swift Package Manager
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          version="$(node -p 'require("./packages/react/package.json").version')"
+          if existing="$(gh api "repos/$GITHUB_REPOSITORY/git/ref/tags/$version" --jq .object.sha 2>/dev/null)"; then
+            test "$existing" = "$GITHUB_SHA" || { echo "Tag $version already points at $existing"; exit 1; }
+          else
+            gh api "repos/$GITHUB_REPOSITORY/git/refs" -f ref="refs/tags/$version" -f sha="$GITHUB_SHA"
+          fi
