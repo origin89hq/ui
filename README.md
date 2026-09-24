@@ -35,7 +35,7 @@ Android: the `platforms/compose` Gradle project builds an Android library. Run `
 
 `pnpm brand:generate` derives native tokens, fonts and license resources from the pinned `@origin89/brand` release. `brand-provenance.json` records input and output hashes; `pnpm brand:check` rejects drift. Update the package version and regenerate these files together. Do not hand-edit generated palettes.
 
-Run all three platform checks before a release. `just package` produces the React tarball. Each npm release also tags its commit with the plain version, such as `0.2.0`, after the Swift and Android checks pass; Swift consumers resolve that tag and `platforms/compose/gradlew` builds Android artifacts from it. No mobile or web runtime depends on a controller checkout. Extracted web illustrations originate from `origin89hq/origin89` commit `7dc27cd9e5f7f7ae67b519b037ca600265012d1e`.
+Run all three platform checks before a release. `just package` produces the React tarball. The Swift package is versioned separately from npm: `just swift-release 0.3.0` runs the `release-swift` workflow on `main`, which checks the version, runs the Swift tests and iOS Simulator build, then tags that commit `0.3.0` for Swift Package Manager. `platforms/compose/gradlew` builds Android artifacts from a checkout. No mobile or web runtime depends on a controller checkout. Extracted web illustrations originate from `origin89hq/origin89` commit `7dc27cd9e5f7f7ae67b519b037ca600265012d1e`.
 
 See [LICENSING.md](LICENSING.md): first-party source is public for review while its software license is being selected. Brand and font terms remain separate.
 
