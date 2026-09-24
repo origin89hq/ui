@@ -27,7 +27,7 @@ React: install `@origin89/ui-react` from npm. Import `Reading` or `EquipmentIllu
 <Reading label="Battery" reading={{ state: "current", value: 76, unit: "%" }} />
 ```
 
-Swift: add `https://github.com/origin89hq/ui` as a Swift package dependency with an exact version such as `0.2.0`, link `Origin89UI`, then use `Origin89Reading`. Native previews include current, zero, stale and unknown examples.
+Swift: add `https://github.com/origin89hq/ui` as a Swift package dependency with an exact version such as `0.2.0`, link `Origin89UI`, then use `Origin89Reading`. Brand colours follow light and dark mode through `.foregroundStyle(.origin89.muted)` or `Color.origin89.surface`; fixed palettes stay available as `Origin89Tokens.light` and `.dark`. Text styles such as `.font(.origin89Label)` register the bundled fonts. Native previews include current, zero, stale and unknown examples.
 
 Android: the `platforms/compose` Gradle project builds an Android library. Run `./gradlew :ui:publishToMavenLocal` there, add `mavenLocal()` to a consuming development project and depend on `com.origin89:ui-compose:0.1.0`. Release AAR and source artifacts are also attached to GitHub releases; Maven Central publication is not configured yet.
 

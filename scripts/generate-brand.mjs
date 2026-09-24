@@ -25,7 +25,7 @@ const swiftPalette = (theme) =>
     .join(",\n");
 outputs.set(
   "platforms/swiftui/Sources/Origin89UI/GeneratedTokens.swift",
-  `// Generated from @origin89/brand ${version}; run pnpm brand:generate.\nimport SwiftUI\npublic struct Origin89Palette: Sendable {\n${keys.map((key) => `    public let ${camel(key)}: Color`).join("\n")}\n}\npublic enum Origin89Tokens {\n    public static let light = Origin89Palette(\n${swiftPalette("light")}\n    )\n    public static let dark = Origin89Palette(\n${swiftPalette("dark")}\n    )\n}\n`,
+  `// Generated from @origin89/brand ${version}; run pnpm brand:generate.\nimport SwiftUI\npublic struct Origin89Palette: Sendable {\n${keys.map((key) => `    public let ${camel(key)}: Color`).join("\n")}\n}\npublic enum Origin89Tokens {\n    public static let light = Origin89Palette(\n${swiftPalette("light")}\n    )\n    public static let dark = Origin89Palette(\n${swiftPalette("dark")}\n    )\n    /// Colours that follow the current light or dark appearance.\n    public static let adaptive = Origin89Palette(\n${keys.map((key) => `        ${camel(key)}: Color(light: light.${camel(key)}, dark: dark.${camel(key)})`).join(",\n")}\n    )\n}\n`,
 );
 const kotlinPalette = (theme) =>
   keys
